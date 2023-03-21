@@ -11,12 +11,13 @@ X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.2,random__state=4
 from sklearn.linear_model import LogisticRegression
 model=LogisticRegression()
 model.fit(X_train,Y_train)
-print('Model Score:'model.score(X_test,Y_test))
+print('Model Score:',model.score(X_test,Y_test))
 from sklearn.preprocessing import MinMaxScaler
 scaler=MinMaxScaler()
 scaler.fit(X_train)
 X_train=scaler.transform(X_train)
 X_test=scaler.transform(X_test)
+model.fit(X_train,Y_train)
 y_pred=model.predict(X_test)
 from sklearn.metrics import confusion_matrix
 cf_matrix=confusion_matrix(Y_test,y_pred)
